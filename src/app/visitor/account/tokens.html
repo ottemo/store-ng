@@ -1,0 +1,113 @@
+<i class="init-controller" ng-init="activate()"></i>
+
+<div class="container my-account">
+    <div class="page-header">
+        <h1>Credit cards</h1>
+    </div>
+
+    <div class="row">
+        <!-- left-side menu -->
+        <ng-include src="'/views/visitor/account/sidebar.html'"></ng-include>
+
+        <!-- tokens info -->
+        <div class="col-xs-12 col-sm-9">
+            <!-- note: this is also inside the modal -->
+            <!-- error message -->
+            <ot-message-manager item="message"></ot-message-manager>
+
+            <div class="clearfix"></div>
+            <!-- tokens info table -->
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Credit cards
+                    </h3>
+                </div>
+
+                <div class="panel-body">
+
+                    <!-- default credit card -->
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 account-list-item account-list-item-default item-credit-card"
+                             ng-show="defaultToken.ID">
+                            <div class="panel panel-default ">
+                                <div class="panel-body">
+
+                                    <div class="default-note">
+                                        <i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i>
+                                        Default
+                                    </div>
+
+                                    <div class="account-block-row">
+                                        <div class="account-block-icon card card-type-{{defaultToken.Extra.type.toLowerCase()}}">&nbsp;</div>
+                                        <div class="account-block-info">
+                                            <strong>
+                                                ************{{defaultToken.Extra.number}}
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <div class="account-block-row">
+                                        <div class="account-block-icon"> Exp:</div>
+                                        <div class="account-block-info">{{parseDate(defaultToken.Extra.expiration_date)}}</div>
+                                    </div>
+                                    <div ng-if="paymentMethods.tokenAble.length > 1"
+                                         class="account-block-row">
+                                        <div class="account-block-icon">&nbsp</div>
+                                        <div class="account-block-info">{{getPaymentMethodName(defaultToken.Desc)}}</div>
+                                    </div>
+
+                                    <div class="account-block-buttons">
+                                        <a ng-click="remove(defaultToken.ID)">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- regular credit cards -->
+                    <div class="row">
+                        <div ng-repeat="token in tokens"
+                             ng-if="!isDefault(token.ID)"
+                             class="col-sm-6 col-md-4 account-list-item item-credit-card">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="account-block-row">
+                                        <div class="account-block-icon card card-type-{{token.Extra.type.toLowerCase()}}">&nbsp;</div>
+                                        <div class="account-block-info">
+                                            <strong>
+                                                ************{{token.Extra.number}}
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <div class="account-block-row">
+                                        <div class="account-block-icon"> Exp:</div>
+                                        <div class="account-block-info">{{parseDate(token.Extra.expiration_date)}}</div>
+                                    </div>
+                                    <div ng-if="paymentMethods.tokenAble.length > 1"
+                                         class="account-block-row">
+                                        <div class="account-block-icon">&nbsp</div>
+                                        <div class="account-block-info">{{getPaymentMethodName(token.Desc)}}</div>
+                                    </div>
+
+                                    <div class="account-block-buttons">
+                                        <a href="#" ng-click="setDefaultCard(token.ID)">Set Default</a>|
+                                        <a href="#" ng-click="remove(token.ID)">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary"
+                            ng-click="popUpOpen()"
+                            ng-disabled="paymentMethods.tokenAble.length == 0">
+                        + Add Credit Card
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-include src="'/views/visitor/account/modal/credit-card-new.html'"></ng-include>
+</div>

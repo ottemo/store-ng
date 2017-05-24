@@ -1,0 +1,98 @@
+<div class="reviews-ratings">
+    <div class="first-review-message" ng-show="showFirstReviewMessage">
+        Be the first to review this product
+    </div>
+    <div ng-repeat="review in reviewsList" class="review-block">
+        <div ng-if="review.username" class="review-by">Review by {{review.username}}</div>
+        <div class="not-approved-label" ng-hide="review.approved">
+            <span class="label label-warning" >Not approved</span>
+        </div>
+        <div class="ratings">
+            <div ng-if="review.rating" class="rating-box">
+                <div class="rating" ng-style="{width: '{{review.rating * 20}}%'}"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div ng-if="review.review" class="review-text">{{review.review}}</div>
+        <div>(Posted on {{review.created_at | date:'M/d/yyyy'}})</div>
+    </div>
+
+    <div ng-show="!isLoggedIn" class="unregistered-message">
+        Only registered users can write reviews. Please <a href="/login">log in </a> or <a href="/registration">register</a>
+    </div>
+    <div ng-show="isLoggedIn">
+        <div class="add-review">
+            <h2>Write Your Review</h2>
+            <h5>You're reviewing: <span>{{productName}}</span></h5>
+            <h6>How do you rate this product? *</h6>
+            <form name="addReviewForm"
+                  novalidate
+                  ng-submit="addReviewForm.$valid && saveReview()">
+
+                <div class="form-group"
+                     ng-class="{ 'has-error' : hasErr('rating') }">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th><span>1</span> <span>star</span></th>
+                                <th><span>2</span> <span>stars</span></th>
+                                <th><span>3</span> <span>stars</span></th>
+                                <th><span>4</span> <span>stars</span></th>
+                                <th><span>5</span> <span>stars</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Rating</th>
+                                <td><input type="radio" name="rating" value="1" ng-model="review.rating" required></td>
+                                <td><input type="radio" name="rating" value="2" ng-model="review.rating" required></td>
+                                <td><input type="radio" name="rating" value="3" ng-model="review.rating" required></td>
+                                <td><input type="radio" name="rating" value="4" ng-model="review.rating" required></td>
+                                <td><input type="radio" name="rating" value="5" ng-model="review.rating" required></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="help-block"
+                         ng-show="hasErr('rating')">
+                        Please select one of each of the ratings above
+                    </div>
+                </div>
+
+                <label for="nickname_field">Name *</label>
+                <div class="input-box">
+                    <input readonly=""
+                           id="nickname_field"
+                           type="text"
+                           name="name"
+                           value="{{visitor.fname}} {{visitor.lname}}">
+                </div>
+
+                <div class="form-group"
+                     ng-class="{ 'has-error' : hasErr('review') }">
+                    <label for="review_field">Review *</label>
+                    <div class="input-box">
+                        <textarea name="review"
+                                  id="review_field"
+                                  cols="5" rows="3"
+                                  ng-model="review.review"
+                                  required
+                                  ng-class="{ 'has-error' : hasErr('review') }">
+
+                                  </textarea>
+                        <div class="help-block"
+                             ng-show="hasErr('review')">
+                            This is a required field.
+                        </div>
+                    </div>
+                </div>
+
+                <ot-message-manager item="saveMessage"></ot-message-manager>
+
+                <button type="submit" title="Submit Review" class="btn btn-primary btn-lg">submit review</button>
+
+            </form>
+        </div>
+    </div>
+</div>

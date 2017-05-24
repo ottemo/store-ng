@@ -1,0 +1,19 @@
+<div class="row category__best-sellers" ng-if="bestSellers.length > 0">
+    <div class="col-xs-12">
+        <div class="filter-block nav">
+            <div class="nav__header">Bestsellers</div>
+            <div class="nav-divider"></div>
+            <div ng-repeat="bestSeller in bestSellers" class="col-xs-12 bestSeller">
+                <div class="best-seller-image col-xs-5">
+                    <a href="{{bestSeller.Url}}">
+                        <img ng-src="{{bestSeller.Images[0].thumb}}" alt="{{bestSeller.Name}}" />
+                    </a>
+                </div>
+                <div class="col-xs-7 p-a-0">
+                   <a href="{{bestSeller.Url}}" class="best-seller-name">{{bestSeller.Extra.name}}</a>
+                   <span class="best-seller-price">{{bestSeller.Extra.price | currency}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+{
+  "useStrict": "use strict",
+  "apiUrl": "https://api.example.com",
+  "fbAppId": "XXXXXXXXXXXXXXXX",
+  "theme": "demo",
+  "themeRepoUrl": "git@github.com:ORGANIZATION/REPO.git",
+  "googleClientId": "XXXXXXXXXXXXXXXXXXXXXX.apps.googleusercontent.com",
+  "googleAnalyticsId": "UA-XXXXXXXX-1",
+  "instagramClientId": "XXXXXXXXXXXXXXX",
+  "instagramClientToken": "XXXXXXXXXXXXXXXXXXXXXXX"
+}

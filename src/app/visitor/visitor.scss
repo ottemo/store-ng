@@ -1,0 +1,103 @@
+$address-icons-color: #dcdcdc;
+
+// Login screen
+@media (min-width: $screen-sm-min) {
+    .social-login .btn {
+        margin-top: 25px;
+        + .btn {
+            margin-top: 40px;
+        }
+    }
+}
+
+#credit-card-new-popup {
+  .form-control {
+    padding: 6px 12px;
+  }
+}
+
+.account-list-item {
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+        &:nth-child(2n+1) {
+            clear: left;
+        }
+    }
+
+    @media (min-width: $screen-md-min) {
+        &:nth-child(3n+1) {
+            clear: left;
+        }
+    }
+
+    &.account-list-item-default > .panel {
+        border-color: $brand-success;
+    }
+
+    .default-note {
+        font-size: 12px;
+        color: $brand-success;
+        margin-bottom: 5px;
+
+        i {
+            padding-right: 10px;
+        }
+    }
+
+    .account-block-row {
+        margin-top: 10px;
+        @extend .clearfix;
+
+        .account-block-info {
+            margin-left: 45px;
+
+            &.payment-method {
+                margin-left: 41px;
+                font-weight: bold;
+            }
+        }
+
+        .account-block-icon {
+            float: left;
+            width: 37px;
+            color: $address-icons-color;
+
+            &.card {
+                height: 22px;
+                backgroud-color: #fff;
+                background-position: 50% 50%;
+                background-repeat: no-repeat;
+
+                &.card-type-visa {
+                    background-image: url("/images/cards/visa.gif");
+                }
+                &.card-type-american_express {
+                    background-image: url("/images/cards/american_express.gif");
+                }
+                &.card-type-discover {
+                    background-image: url("/images/cards/discover.gif");
+                }
+                &.card-type-mastercard {
+                    background-image: url("/images/cards/mastercard.gif");
+                }
+            }
+
+        }
+    }
+
+    .account-block-buttons {
+        margin: 10px 0 0 45px;
+
+        a {
+            display: inline-block;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+        .btn-group.open .dropdown-toggle {
+            box-shadow: none;
+        }
+    }
+
+    &.item-credit-card .account-block-buttons a {
+        margin-right: 5px;
+    }
+}

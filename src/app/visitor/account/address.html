@@ -1,0 +1,222 @@
+<i class="init-controller" ng-init="activate()"></i>
+
+<div class="container my-account">
+    <div class="page-header">
+        <h1>Addresses</h1>
+    </div>
+
+    <div class="row">
+        <!-- left-side menu -->
+        <div ng-include="visitor/account/sidebar.html"></div>
+
+        <!-- adresses info -->
+        <div class="col-xs-12 col-sm-9">
+
+            <!-- note: this is also inside the modal -->
+            <!-- error message -->
+            <ot-message-manager item="message"></ot-message-manager>
+
+            <!-- adresses info table -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Addresses
+                    </h3>
+                </div>
+                <div class="panel-body">
+
+                    <!-- default addresses -->
+                    <div class="row">
+                        <div ng-repeat="defaultAddress in defaultAddresses"
+                             class="col-sm-6 col-md-4 account-list-item account-list-item-default">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+
+                                    <div class="default-note" ng-if="defaultAddress.isBilling">
+                                        <i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i>Default Billing
+                                    </div>
+                                    <div class="default-note" ng-if="defaultAddress.isShipping">
+                                        <i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i>Default Shipping
+                                    </div>
+
+                                    <div class="account-block-row">
+                                        <div class="account-block-icon">
+                                            <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="account-block-info">
+                                            <strong>
+                                                {{defaultAddress.address.Extra.first_name}}
+                                                {{defaultAddress.address.Extra.last_name}}
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <div class="account-block-row">
+                                        <div class="account-block-icon">
+                                            <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="account-block-info">{{defaultAddress.address.Name}}</div>
+                                    </div>
+                                    <div class="account-block-row">
+                                        <div class="account-block-icon">
+                                            <i class="fa fa-phone fa-lg" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="account-block-info">{{defaultAddress.address.Extra.phone}}</div>
+                                    </div>
+
+                                    <div class="account-block-buttons">
+                                        <div class="btn-group"
+                                             ng-if="!(defaultAddress.isShipping && defaultAddress.isBilling)">
+                                            <a type="button" class="dropdown-toggle"
+                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-star fa-lg" aria-hidden="true"></i>
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a ng-click="setAsDefault(defaultAddress.address.ID, 'billing')"
+                                                       ng-if="defaultAddress.isShipping">
+                                                        Set as default billing address
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a ng-click="setAsDefault(defaultAddress.address.ID, 'shipping')"
+                                                       ng-if="defaultAddress.isBilling">
+                                                        Set as default shipping address
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <a ng-click="popUpOpen(defaultAddress.address.ID)">
+                                            <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                                        </a>
+                                        <a ng-click="remove(defaultAddress.address.ID)">
+                                            <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--regular addresses-->
+                    <div class="row">
+                        <div ng-repeat="address in addresses"
+                             ng-if="!isDefault(address.ID)"
+                             class="col-sm-6 col-md-4 account-list-item">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+
+                                    <div class="account-block-row">
+                                        <div class="account-block-icon">
+                                            <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="account-block-info">
+                                            <strong>
+                                                {{address.Extra.first_name}}
+                                                {{address.Extra.last_name}}
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <div class="account-block-row">
+                                        <div class="account-block-icon">
+                                            <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="account-block-info">{{address.Name}}</div>
+                                    </div>
+                                    <div class="account-block-row">
+                                        <div class="account-block-icon">
+                                            <i class="fa fa-phone fa-lg" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="account-block-info">{{address.Extra.phone}}</div>
+                                    </div>
+
+                                    <div class="account-block-buttons">
+                                        <div class="btn-group"
+                                             ng-if="!(defaultAddress.isShipping && defaultAddress.isBilling)">
+                                            <a type="button" class="dropdown-toggle"
+                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-star fa-lg" aria-hidden="true"></i>
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a ng-click="setAsDefault(address.ID, 'billing')">
+                                                        Set as default billing address
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a ng-click="setAsDefault(address.ID, 'shipping')">
+                                                        Set as default shipping address
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <a ng-click="popUpOpen(address.ID)">
+                                            <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                                        </a>
+                                        <a ng-click="remove(address.ID)">
+                                            <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary"
+                            ng-click="popUpOpen()">
+                        + add address
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- change address modal -->
+    <div class="modal fade"
+         id="parent_popup_address"
+         tabindex="-1"
+         role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button data-dismiss="modal"
+                            class="close"
+                            type="button">
+                        <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title">{{address._id ? 'Edit' : 'Add'}} Address</h4>
+                </div>
+                <div class="modal-body">
+
+                    <!-- note: this is also outside the modal -->
+                    <!-- error message -->
+                    <ot-message-manager item="message"></ot-message-manager>
+
+                    <!-- Form to add/edit an addresses -->
+                    <ot-address-form
+                            form-ctrl="addressForm"
+                            form-model="address"
+                            on-submit="save()">
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-push-2">
+                                <div class="col-sm-8 col-sm-push-4">
+                                    <button type="submit"
+                                            class="btn btn-primary">
+                                        Save
+                                    </button>
+                                    <button type="button"
+                                            data-dismiss="modal"
+                                            class="btn btn-default">
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </ot-address-form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

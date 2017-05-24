@@ -1,0 +1,24 @@
+# Folders
+.idea
+.tmp
+.sass-cache
+.vagrant
+*.sublime-project
+*.sublime-workspace
+
+/src/themes/*
+!/src/themes/.gitkeep
+app/bower_components
+app/bundle.js`
+app/media
+dist
+nbproject/*
+node_modules
+tags
+
+# Files
+*.iml
+.DS_Store
+
+# Ottemo Specific
+tmp/*
