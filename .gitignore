@@ -6,8 +6,6 @@
 *.sublime-project
 *.sublime-workspace
 
-/src/themes/*
-!/src/themes/.gitkeep
 app/bower_components
 app/bundle.js`
 app/media
@@ -22,3 +20,8 @@ tags
 
 # Ottemo Specific
 tmp/*
+/src/themes/*
+/config/*
+!/config/config.js
+!/config/example-config.json
+!/src/themes/.gitkeep
