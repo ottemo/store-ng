@@ -8,6 +8,9 @@
 
 /src/themes/*
 !/src/themes/.gitkeep
+/config/*
+!/config/config.js
+!/config/example-config.json
 app/bower_components
 app/bundle.js`
 app/media
