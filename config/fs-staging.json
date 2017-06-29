@@ -1,0 +1,11 @@
+{
+    "useStrict": "use strict",
+    "apiUrl": "https://api.fs-stage.ks.ottemo.io",
+    "theme": "ferastyle",
+    "themeRepoUrl": "git@github.com:ottemo/ferastyle.git",
+    "fbAppId": "269202866777952",
+    "googleClientId": "271076120819-08v5rvjhcfb1pil0c00gd5fij0371id2.apps.googleusercontent.com",
+    "googleAnalyticsId": "UA-XXXXXXXX-1",
+    "instagramClientId": "4051845479",
+    "instagramClientToken": "4051845479.1677ed0.34b6ad8e61df4a96933a14f11ac7342f"
+}
