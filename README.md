@@ -7,7 +7,7 @@ Ultimo - Demo Store for the Ottemo Platform
 
 ## License
 
-[MIT License](LICENSE.md) Copyright 2016, Ottemo, Inc
+[Mozilla Publice License v2.0](LICENSE.md) Copyright 2017, Ottemo, Inc
 
 ## Terms and Conditions
 
