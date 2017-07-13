@@ -7,7 +7,7 @@ Ultimo - Demo Store for the Ottemo Platform
 
 ## License
 
-[Mozilla Publice License v2.0](LICENSE.md) Copyright 2017, Ottemo, Inc
+[Mozilla Publice License v2.0](LICENSE.md) 
 
 ## Terms and Conditions
 
@@ -21,3 +21,6 @@ and distribute any feedback, ideas, code, or other information (“Submission”
 you submit through GitHub.
 
 2.	Your Submission is an original work of authorship and you are the owner or are legally entitled to grant the license stated above.
+
+### Copyright
+© 2017 Ottemo, Inc.
