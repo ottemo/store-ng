@@ -28,7 +28,7 @@ fi
 echo "use $IMAGE as image name"
 
 echo "build alpine based storefront container"
-docker build -t $IMAGE -t gcr.io/ottemo-kube/storefront .
+docker build -t $IMAGE -t gcr.io/ottemo-kube/storefront:latest .
 if [ $? -ne 0 ]; then
   echo "error in build storefront alpine based container"
   exit 2
@@ -40,7 +40,7 @@ if [ $? -ne 0 ]; then
   exit 2
 fi
 
-gcloud docker -- push gcr.io/ottemo-kube/storefront
+gcloud docker -- push gcr.io/ottemo-kube/storefront:latest
 if [ $? -ne 0 ]; then
   echo "error in push latest image tag"
   exit 2
