@@ -15,20 +15,21 @@ case $i in
 esac
 done
 
+STOREFRONTIMAGE="ottemo/storefront"
 MYDIR=$(cd `dirname ${BASH_SOURCE[0]}` && pwd)
 STOREREPO="$MYDIR/.."
 cd $STOREREPO
 
 if ! [ -n "$version" ] ; then
   date=$(date +%Y%m%d-%H%M%S)
-  IMAGE="gcr.io/ottemo-kube/storefront:${date}"
+  IMAGE="${STOREFRONTIMAGE}:${date}"
 else
-  IMAGE="gcr.io/ottemo-kube/storefront:$version"
+  IMAGE="${STOREFRONTIMAGE}:$version"
 fi
 echo "use $IMAGE as image name"
 
 echo "build alpine based storefront container"
-docker build -t $IMAGE -t gcr.io/ottemo-kube/storefront:latest .
+docker build -t $IMAGE -t ${STOREFRONTIMAGE}:latest .
 if [ $? -ne 0 ]; then
   echo "error in build storefront alpine based container"
   exit 2
@@ -40,7 +41,7 @@ if [ $? -ne 0 ]; then
   exit 2
 fi
 
-gcloud docker -- push gcr.io/ottemo-kube/storefront:latest
+gcloud docker -- push ${STOREFRONTIMAGE}:latest
 if [ $? -ne 0 ]; then
   echo "error in push latest image tag"
   exit 2
