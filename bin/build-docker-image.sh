@@ -20,9 +20,11 @@ MYDIR=$(cd `dirname ${BASH_SOURCE[0]}` && pwd)
 STOREREPO="$MYDIR/.."
 cd $STOREREPO
 
+BUILD=$(git rev-list origin/develop --count)
+
 if ! [ -n "$version" ] ; then
   date=$(date +%Y%m%d-%H%M%S)
-  IMAGE="${STOREFRONTIMAGE}:${date}"
+  IMAGE="${STOREFRONTIMAGE}:${date}-${BUILD}"
 else
   IMAGE="${STOREFRONTIMAGE}:$version"
 fi
