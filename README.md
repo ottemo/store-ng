@@ -5,10 +5,6 @@ Ultimo - Demo Store for the Ottemo Platform
 
 [![Build Status](http://jenkins.ottemo.io/buildStatus/icon?job=build_storefront_docker_image)](http://jenkins.ottemo.io/job/build_storefront_docker_image/)
 
-## License
-
-[Mozilla Publice License v2.0](LICENSE.md) 
-
 ## Terms and Conditions
 
 All Submissions you make to Ottemo, Inc. (“Ottemo”) through GitHub are subject
