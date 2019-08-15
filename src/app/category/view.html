@@ -34,7 +34,7 @@
                     <a class="product-box-img r-container r-container-square"
                         ng-href="{{::productService.getUrl(product._id)}}">
                         <img class="r-target"
-                            ng-src="{{::product.image[0].medium}}"
+                            ng-src="{{::product.image[0].thumb}}"
                             err-src="placeholder.png"
                             itemprop="image">
                     </a>
@@ -75,4 +75,3 @@
 <!-- quick view modal -->
 <div ng-include="category/modal/quick-view.html"></div>
 <div ng-include="category/modal/quick-view-success.html"></div>
-
