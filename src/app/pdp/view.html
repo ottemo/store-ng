@@ -52,13 +52,17 @@
         </div>
 
         <!-- images -->
-        <div class="col-sm-7 col-md-6 pdp-img-list">
+        <div class="col-sm-7 col-md-6 pdp-img-list"
+        >
             <div ot-slider
-                config="{dots:true}">
+                config="{dots:true}"
+                ng-if="product"
+                ng-init="product ? true : false">
                 <div ng-repeat="img in product.images">
                     <a class="pdp-img-container js-pdp-img"
-                        data-href-lg="{{img.large}}">
-                        <img ng-src="{{img.large}}"
+                        data-href-lg="{{img.thumb}}">
+                        <img
+                        ng-src="{{img.thumb}}"
                             class="img-fill"
                             itemprop="image" />
                     </a>
@@ -217,4 +221,3 @@ $(function() {
 });
 
 </script>
-
