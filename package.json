@@ -11,7 +11,7 @@
     "cheerio": "^0.20.0",
     "connect-modrewrite": "^0.8.1",
     "del": "^0.1.2",
-    "express": "^4.12.3",
+    "express": "^4.17.3",
     "glob": "^7.0.5",
     "glob-array": "^0.1.2",
     "gulp": "^3.8.11",
